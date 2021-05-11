@@ -110,8 +110,8 @@ gmaMat = rand(dimNum, pntNum) - 0.5;
 knlOrder = 3;   % kernel order, -1: Gaussian kernel, 0 to 4: Matern kernel
 knlWidth = 0.2; % kernel width
 
-dq2KMat = d2qKernel(datMat, btaMat, alpMat, gmaMat, knlOrder, knlWidth); 
-% dq2KMat(:, i): second derivative with respect to qi
+d2qKMat = d2qKernel(datMat, btaMat, alpMat, gmaMat, knlOrder, knlWidth); 
+% d2qKMat(:, i): second derivative with respect to qi
 
 %%
 
@@ -128,8 +128,8 @@ gma2Mat = rand(dimNum, pnt2Num) - 0.5;
 knlOrder = 3;   % kernel order, -1: Gaussian kernel, 0 to 4: Matern kernel
 knlWidth = 0.2; % kernel width
 
-[dq2K1Mat, dq2K2Mat] = d2qKernel(dat1Mat, dat2Mat, bta1Mat, alp2Mat, gma1Mat, gma2Mat, knlOrder, knlWidth);
-% dq2K1Mat(:, i): second derivative with respect to ri
-% dq2K2Mat(:, j): second derivative with respect to sj
+[d2qK1Mat, d2qK2Mat] = d2qKernel(dat1Mat, dat2Mat, bta1Mat, alp2Mat, gma1Mat, gma2Mat, knlOrder, knlWidth);
+% d2qK1Mat(:, i): second derivative with respect to ri
+% d2qK2Mat(:, j): second derivative with respect to sj
 
 
