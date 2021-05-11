@@ -1,0 +1,135 @@
+% Compile the files. This only needs to be run once.
+compile
+
+%%
+
+% --------------- %
+%  computeKernel  %
+% --------------- %
+
+dimNum = 3;     % number of dimensions, can ONLY be 3
+pntNum = 100;   % number of points
+datMat = rand(pntNum, dimNum, 'gpuArray') - 0.5;   % datMat = [q1, q2, ..., qn]^T
+
+knlOrder = 3;   % kernel order, -1: Gaussian kernel, 0 to 4: Matern kernel
+knlWidth = 0.2; % kernel width
+
+knlMat = computeKernel(datMat, knlOrder, knlWidth);   % knlMat(i, j) = k(qi, qj)
+
+%%
+
+dimNum  = 3;    % number of dimensions, can ONLY be 3
+pnt1Num = 100;  % number of points
+pnt2Num = 200;  % number of points
+dat1Mat = rand(pnt1Num, dimNum, 'gpuArray') - 0.5;   % dat1Mat = [r1, r2, ..., rm]^T
+dat2Mat = rand(pnt2Num, dimNum, 'gpuArray') - 0.5;   % dat2Mat = [s1, s2, ..., sn]^T
+
+knlOrder = 3;   % kernel order, -1: Gaussian kernel, 0 to 4: Matern kernel
+knlWidth = 0.2; % kernel width
+
+knlMat = computeKernel(dat1Mat, dat2Mat, knlOrder, knlWidth);   % knlMat(i, j) = k(ri, sj)
+
+%%
+
+% ---------------- %
+%  multiplyKernel  %
+% ---------------- %
+
+dimNum = 3;     % number of dimensions, can ONLY be 3
+pntNum = 100;   % number of points
+datMat = rand(pntNum, dimNum, 'gpuArray') - 0.5;   % datMat = [q1, q2, ..., qn]^T
+alpMat = rand(pntNum, dimNum, 'gpuArray') - 0.5;   % alpMat = [a1, a2, ..., an]^T
+
+knlOrder = 3;   % kernel order, -1: Gaussian kernel, 0 to 4: Matern kernel
+knlWidth = 0.2; % kernel width
+
+vlcMat = multiplyKernel(datMat, alpMat, knlOrder, knlWidth);   % vlcMat(i, :) = sum_j k(qi, qj) aj
+
+%%
+
+dimNum  = 3;    % number of dimensions, can ONLY be 3
+pnt1Num = 100;  % number of points
+pnt2Num = 200;  % number of points
+dat1Mat = rand(pnt1Num, dimNum, 'gpuArray') - 0.5;   % dat1Mat = [r1, r2, ..., rm]^T
+dat2Mat = rand(pnt2Num, dimNum, 'gpuArray') - 0.5;   % dat2Mat = [s1, s2, ..., sn]^T
+alp2Mat = rand(pnt2Num, dimNum, 'gpuArray') - 0.5;   % alp2Mat = [a1, a2, ..., an]^T
+
+knlOrder = 3;   % kernel order, -1: Gaussian kernel, 0 to 4: Matern kernel
+knlWidth = 0.2; % kernel width
+
+vlcMat = multiplyKernel(dat1Mat, dat2Mat, alp2Mat, knlOrder, knlWidth);   % vlcMat(i, :) = sum_j k(qi, qj) aj
+
+%%
+
+% ---------- %
+%  dqKernel  %
+% ---------- %
+
+dimNum = 3;     % number of dimensions, can ONLY be 3
+pntNum = 100;   % number of points
+datMat = rand(pntNum, dimNum, 'gpuArray') - 0.5;   % datMat = [q1, q2, ..., qn]^T
+btaMat = rand(pntNum, dimNum, 'gpuArray') - 0.5;   % btaMat = [b1, b2, ..., bn]^T
+alpMat = rand(pntNum, dimNum, 'gpuArray') - 0.5;   % alpMat = [a1, a2, ..., an]^T
+
+knlOrder = 3;   % kernel order, -1: Gaussian kernel, 0 to 4: Matern kernel
+knlWidth = 0.2; % kernel width
+
+dqKMat = dqKernel(datMat, btaMat, alpMat, knlOrder, knlWidth);
+% dqKMat(i, :): first derivative of sum_ij k(qi, qj) bi^T aj with respect to qi
+
+%%
+
+dimNum  = 3;    % number of dimensions, can ONLY be 3
+pnt1Num = 100;  % number of points
+pnt2Num = 200;  % number of points
+dat1Mat = rand(pnt1Num, dimNum, 'gpuArray') - 0.5;   % dat1Mat = [r1, r2, ..., rm]^T
+dat2Mat = rand(pnt2Num, dimNum, 'gpuArray') - 0.5;   % dat2Mat = [s1, s2, ..., sn]^T
+bta1Mat = rand(pnt1Num, dimNum, 'gpuArray') - 0.5;   % bta1Mat = [b1, b2, ..., bm]^T
+alp2Mat = rand(pnt2Num, dimNum, 'gpuArray') - 0.5;   % alp2Mat = [a1, a2, ..., an]^T
+
+knlOrder = 3;   % kernel order, -1: Gaussian kernel, 0 to 4: Matern kernel
+knlWidth = 0.2; % kernel width
+
+[dqK1Mat, dqK2Mat] = dqKernel(dat1Mat, dat2Mat, bta1Mat, alp2Mat, knlOrder, knlWidth);
+% dqK1Mat(i, :): first derivative of sum_ij k(ri, sj) bi^T aj with respect to ri
+% dqK2Mat(j, :): first derivative of sum_ij k(ri, sj) bi^T aj with respect to sj
+
+%%
+
+% ----------- %
+%  d2qKernel  %
+% ----------- %
+
+dimNum = 3;     % number of dimensions, can ONLY be 3
+pntNum = 100;   % number of points
+datMat = rand(pntNum, dimNum, 'gpuArray') - 0.5;   % datMat = [q1, q2, ..., qn]^T
+btaMat = rand(pntNum, dimNum, 'gpuArray') - 0.5;
+alpMat = rand(pntNum, dimNum, 'gpuArray') - 0.5;
+gmaMat = rand(pntNum, dimNum, 'gpuArray') - 0.5;
+
+knlOrder = 3;   % kernel order, -1: Gaussian kernel, 0 to 4: Matern kernel
+knlWidth = 0.2; % kernel width
+
+d2qKMat = d2qKernel(datMat, btaMat, alpMat, gmaMat, knlOrder, knlWidth); 
+% d2qKMat(i, :): second derivative with respect to qi
+
+%%
+
+dimNum  = 3;    % number of dimensions, can ONLY be 3
+pnt1Num = 100;  % number of points
+pnt2Num = 200;  % number of points
+dat1Mat = rand(pnt1Num, dimNum, 'gpuArray') - 0.5;   % dat1Mat = [r1, r2, ..., rm]^T
+dat2Mat = rand(pnt2Num, dimNum, 'gpuArray') - 0.5;   % dat2Mat = [s1, s2, ..., sn]^T
+bta1Mat = rand(pnt1Num, dimNum, 'gpuArray') - 0.5;
+alp2Mat = rand(pnt2Num, dimNum, 'gpuArray') - 0.5;
+gma1Mat = rand(pnt1Num, dimNum, 'gpuArray') - 0.5;
+gma2Mat = rand(pnt2Num, dimNum, 'gpuArray') - 0.5;
+
+knlOrder = 3;   % kernel order, -1: Gaussian kernel, 0 to 4: Matern kernel
+knlWidth = 0.2; % kernel width
+
+[d2qK1Mat, d2qK2Mat] = d2qKernel(dat1Mat, dat2Mat, bta1Mat, alp2Mat, gma1Mat, gma2Mat, knlOrder, knlWidth);
+% d2qK1Mat(i, :): second derivative with respect to ri
+% d2qK2Mat(j, :): second derivative with respect to sj
+
+
