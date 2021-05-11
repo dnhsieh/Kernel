@@ -1,0 +1,5 @@
+- cudaMemcpyToSymbol doesn't work in main()
+used cudaMemcpyToSymbol in main function, in the function called by main function, the values in constant memory are zeros.
+
+- cudaMemcpyToSymbol doesn't work when placed in a function in another file
+placed cudayMemcpyToSymbol in a function in another file to modualize code, the values in constant memory are zeros.
