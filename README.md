@@ -1,4 +1,4 @@
-## Kernel
+## Utility functions of Matérn and Gaussian kernels
 
 `computeKernel` : compute kernel matrix  
 `multiplyKernel`: multiply kernel matrix by computing elements of kernel matrix on the fly  
