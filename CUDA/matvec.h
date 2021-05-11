@@ -302,8 +302,8 @@ inline __device__ void getVector(vector &vec, double *d_arr, int idx, int num)
 inline __device__ void setVector(double *d_arr, vector vec, int idx, int num)
 {
 	d_arr[          idx] = vec.x;
-   d_arr[    num + idx] = vec.y;
-   d_arr[2 * num + idx] = vec.z;
+	d_arr[    num + idx] = vec.y;
+	d_arr[2 * num + idx] = vec.z;
 
 	return;
 }
@@ -328,16 +328,16 @@ inline __device__ void getMatrix(matrix &mat, double *d_arr, int idx, int num)
 inline __device__ void setMatrix(double *d_arr, matrix mat, int idx, int num)
 {
 	d_arr[          idx] = mat.x.x;
-   d_arr[    num + idx] = mat.x.y;
-   d_arr[2 * num + idx] = mat.x.z;
-                                  
-   d_arr[3 * num + idx] = mat.y.x;
-   d_arr[4 * num + idx] = mat.y.y;
-   d_arr[5 * num + idx] = mat.y.z;
-                                  
-   d_arr[6 * num + idx] = mat.z.x;
-   d_arr[7 * num + idx] = mat.z.y;
-   d_arr[8 * num + idx] = mat.z.z;
+	d_arr[    num + idx] = mat.x.y;
+	d_arr[2 * num + idx] = mat.x.z;
+	                               
+	d_arr[3 * num + idx] = mat.y.x;
+	d_arr[4 * num + idx] = mat.y.y;
+	d_arr[5 * num + idx] = mat.y.z;
+	                               
+	d_arr[6 * num + idx] = mat.z.x;
+	d_arr[7 * num + idx] = mat.z.y;
+	d_arr[8 * num + idx] = mat.z.z;
 
 	return;
 }
@@ -368,20 +368,20 @@ inline __device__ void setElement(double *d_arr, vector v0Vec, vector v1Vec, vec
                                   int idx, int num)
 {
 	d_arr[           idx] = v0Vec.x;
-   d_arr[     num + idx] = v0Vec.y;
-   d_arr[ 2 * num + idx] = v0Vec.z;
-                                   
-   d_arr[ 3 * num + idx] = v1Vec.x;
-   d_arr[ 4 * num + idx] = v1Vec.y;
-   d_arr[ 5 * num + idx] = v1Vec.z;
-                                   
-   d_arr[ 6 * num + idx] = v2Vec.x;
-   d_arr[ 7 * num + idx] = v2Vec.y;
-   d_arr[ 8 * num + idx] = v2Vec.z;
-                                   
-   d_arr[ 9 * num + idx] = v3Vec.x;
-   d_arr[10 * num + idx] = v3Vec.y;
-   d_arr[11 * num + idx] = v3Vec.z;
+	d_arr[     num + idx] = v0Vec.y;
+	d_arr[ 2 * num + idx] = v0Vec.z;
+	                                
+	d_arr[ 3 * num + idx] = v1Vec.x;
+	d_arr[ 4 * num + idx] = v1Vec.y;
+	d_arr[ 5 * num + idx] = v1Vec.z;
+	                                
+	d_arr[ 6 * num + idx] = v2Vec.x;
+	d_arr[ 7 * num + idx] = v2Vec.y;
+	d_arr[ 8 * num + idx] = v2Vec.z;
+	                                
+	d_arr[ 9 * num + idx] = v3Vec.x;
+	d_arr[10 * num + idx] = v3Vec.y;
+	d_arr[11 * num + idx] = v3Vec.z;
 
 	return;
 }
@@ -408,16 +408,16 @@ inline __device__ void setEdge(double *d_arr, vector v10Vec, vector v20Vec, vect
                                int idx, int num)
 {
 	d_arr[          idx] = v10Vec.x;
-   d_arr[    num + idx] = v10Vec.y;
-   d_arr[2 * num + idx] = v10Vec.z;
-                                  
-   d_arr[3 * num + idx] = v20Vec.x;
-   d_arr[4 * num + idx] = v20Vec.y;
-   d_arr[5 * num + idx] = v20Vec.z;
-                                  
-   d_arr[6 * num + idx] = v30Vec.x;
-   d_arr[7 * num + idx] = v30Vec.y;
-   d_arr[8 * num + idx] = v30Vec.z;
+	d_arr[    num + idx] = v10Vec.y;
+	d_arr[2 * num + idx] = v10Vec.z;
+	                               
+	d_arr[3 * num + idx] = v20Vec.x;
+	d_arr[4 * num + idx] = v20Vec.y;
+	d_arr[5 * num + idx] = v20Vec.z;
+	                               
+	d_arr[6 * num + idx] = v30Vec.x;
+	d_arr[7 * num + idx] = v30Vec.y;
+	d_arr[8 * num + idx] = v30Vec.z;
 
 	return;
 }
