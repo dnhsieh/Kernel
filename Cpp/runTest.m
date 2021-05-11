@@ -7,7 +7,7 @@ compile
 %  computeKernel  %
 % --------------- %
 
-dimNum = 2;     % number of dimensions, can be any positive integer
+dimNum = 2;     % number of dimensions, can be 2 or 3
 pntNum = 100;   % number of points
 datMat = rand(dimNum, pntNum) - 0.5;   % datMat = [q1, q2, ..., qn]
 
@@ -18,7 +18,7 @@ knlMat = computeKernel(datMat, knlOrder, knlWidth);   % knlMat(i, j) = k(qi, qj)
 
 %%
 
-dimNum  = 2;    % number of dimensions, can be any positive integer
+dimNum  = 2;    % number of dimensions, can be 2 or 3
 pnt1Num = 100;  % number of points
 pnt2Num = 200;  % number of points
 dat1Mat = rand(dimNum, pnt1Num) - 0.5;   % dat1Mat = [r1, r2, ..., rm]
@@ -35,7 +35,7 @@ knlMat = computeKernel(dat1Mat, dat2Mat, knlOrder, knlWidth);   % knlMat(i, j) =
 %  multiplyKernel  %
 % ---------------- %
 
-dimNum = 2;     % number of dimensions, can be any positive integer
+dimNum = 2;     % number of dimensions, can be 2 or 3
 pntNum = 100;   % number of points
 datMat = rand(dimNum, pntNum) - 0.5;   % datMat = [q1, q2, ..., qn]
 alpMat = rand(dimNum, pntNum) - 0.5;   % alpMat = [a1, a2, ..., an]
@@ -47,7 +47,7 @@ vlcMat = multiplyKernel(datMat, alpMat, knlOrder, knlWidth);   % vlcMat(:, i) = 
 
 %%
 
-dimNum  = 2;    % number of dimensions, can be any positive integer
+dimNum  = 2;    % number of dimensions, can be 2 or 3
 pnt1Num = 100;  % number of points
 pnt2Num = 200;  % number of points
 dat1Mat = rand(dimNum, pnt1Num) - 0.5;   % dat1Mat = [r1, r2, ..., rm]
@@ -65,7 +65,7 @@ vlcMat = multiplyKernel(dat1Mat, dat2Mat, alp2Mat, knlOrder, knlWidth);   % vlcM
 %  dqKernel  %
 % ---------- %
 
-dimNum = 2;     % number of dimensions, can be any positive integer
+dimNum = 2;     % number of dimensions, can be 2 or 3
 pntNum = 100;   % number of points
 datMat = rand(dimNum, pntNum) - 0.5;   % datMat = [q1, q2, ..., qn]
 btaMat = rand(dimNum, pntNum) - 0.5;   % btaMat = [b1, b2, ..., bn]
@@ -79,7 +79,7 @@ dqKMat = dqKernel(datMat, btaMat, alpMat, knlOrder, knlWidth);
 
 %%
 
-dimNum  = 2;    % number of dimensions, can be any positive integer
+dimNum  = 2;    % number of dimensions, can be 2 or 3
 pnt1Num = 100;  % number of points
 pnt2Num = 200;  % number of points
 dat1Mat = rand(dimNum, pnt1Num) - 0.5;   % dat1Mat = [r1, r2, ..., rm]
@@ -100,7 +100,7 @@ knlWidth = 0.2; % kernel width
 %  d2qKernel  %
 % ----------- %
 
-dimNum = 2;     % number of dimensions, can be any positive integer
+dimNum = 2;     % number of dimensions, can be 2 or 3
 pntNum = 100;   % number of points
 datMat = rand(dimNum, pntNum) - 0.5;   % datMat = [q1, q2, ..., qn]
 btaMat = rand(dimNum, pntNum) - 0.5;
@@ -115,7 +115,7 @@ dq2KMat = d2qKernel(datMat, btaMat, alpMat, gmaMat, knlOrder, knlWidth);
 
 %%
 
-dimNum  = 2;    % number of dimensions, can be any positive integer
+dimNum  = 2;    % number of dimensions, can be 2 or 3
 pnt1Num = 100;  % number of points
 pnt2Num = 200;  % number of points
 dat1Mat = rand(dimNum, pnt1Num) - 0.5;   % dat1Mat = [r1, r2, ..., rm]
